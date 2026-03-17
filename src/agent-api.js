@@ -1,4 +1,3 @@
-/* global URL */
 import { WebSocketServer } from 'ws'
 import { z } from 'zod'
 import crypto from 'crypto'

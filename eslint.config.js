@@ -3,6 +3,9 @@ import prettier from 'eslint-config-prettier'
 import prettierPlugin from 'eslint-plugin-prettier'
 
 export default [
+  {
+    ignores: ['dashboard/**', 'rust-v2/**', 'dist/**', 'node_modules/**', 'docs/**'],
+  },
   js.configs.recommended,
   {
     plugins: {
@@ -21,6 +24,12 @@ export default [
         clearInterval: 'readonly',
         TextEncoder: 'readonly',
         TextDecoder: 'readonly',
+        URL: 'readonly',
+        WebSocket: 'readonly',
+        URLSearchParams: 'readonly',
+        AbortController: 'readonly',
+        AbortSignal: 'readonly',
+        crypto: 'readonly',
       },
     },
     rules: {
