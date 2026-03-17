@@ -5,7 +5,9 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "keywords": [
     "p2p",
@@ -26,5 +28,11 @@
     "libp2p": "^3.1.6",
     "ws": "^8.19.0",
     "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "eslint": "^10.0.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "prettier": "^3.8.1"
   }
 }
