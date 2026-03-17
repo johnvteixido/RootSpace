@@ -1,5 +1,0 @@
-C:\Users\Johnt\.gemini\antigravity\scratch\RootSpace\rust-v2\target\debug\deps\futures_ticker-12e8fc8a9e5e8aac.d: C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\futures-ticker-0.0.3\src\lib.rs
-
-C:\Users\Johnt\.gemini\antigravity\scratch\RootSpace\rust-v2\target\debug\deps\libfutures_ticker-12e8fc8a9e5e8aac.rmeta: C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\futures-ticker-0.0.3\src\lib.rs
-
-C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\futures-ticker-0.0.3\src\lib.rs:

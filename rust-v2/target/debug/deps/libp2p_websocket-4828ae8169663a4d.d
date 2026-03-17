@@ -1,9 +1,0 @@
-C:\Users\Johnt\.gemini\antigravity\scratch\RootSpace\rust-v2\target\debug\deps\libp2p_websocket-4828ae8169663a4d.d: C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\lib.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\error.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\framed.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\quicksink.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\tls.rs
-
-C:\Users\Johnt\.gemini\antigravity\scratch\RootSpace\rust-v2\target\debug\deps\liblibp2p_websocket-4828ae8169663a4d.rmeta: C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\lib.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\error.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\framed.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\quicksink.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\tls.rs
-
-C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\lib.rs:
-C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\error.rs:
-C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\framed.rs:
-C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\quicksink.rs:
-C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libp2p-websocket-0.44.0\src\tls.rs:

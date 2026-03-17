@@ -1,3 +1,9 @@
 node_modules/
 .env
 *.log
+rust-v2/target/
+dashboard/dist/
+dist/
+.DS_Store
+*.exe
+*.pdb
