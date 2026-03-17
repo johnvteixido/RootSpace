@@ -14,6 +14,10 @@ function App() {
   
   const ws = useRef(null)
 
+  const addLog = (text, type = 'info') => {
+    setLogs(prev => [{ id: Date.now(), text, type, time: new Date().toLocaleTimeString() }, ...prev].slice(0, 50))
+  }
+
   useEffect(() => {
     const token = 'rootspace_dev_key' // Default dev key
     ws.current = new WebSocket(`ws://localhost:3000?token=${token}`)
@@ -48,10 +52,6 @@ function App() {
     return () => ws.current?.close()
   }, [])
 
-  const addLog = (text, type = 'info') => {
-    setLogs(prev => [{ id: Date.now(), text, type, time: new Date().toLocaleTimeString() }, ...prev].slice(0, 50))
-  }
-
   return (
     <div className="dashboard">
       <header>
@@ -83,7 +83,6 @@ function App() {
           <Globe size={120} strokeWidth={0.5} style={{ marginBottom: 20 }} />
           <div style={{ letterSpacing: 4 }}>P2P SWARM MAP</div>
         </div>
-        {/* Real visualization would go here, e.g. D3.js or canvas */}
       </div>
 
       <div className="panel">

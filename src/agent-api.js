@@ -1,3 +1,4 @@
+/* global URL */
 import { WebSocketServer } from 'ws'
 import { z } from 'zod'
 import crypto from 'crypto'
@@ -68,17 +69,17 @@ export class AgentAPI {
   handleConnections() {
     this.wss.on('connection', (ws, req) => {
       // Allow token via Header or Query Parameter (for browser dashboards)
-      const url = new URL(req.url, `http://${req.headers.host}`);
-      const queryToken = url.searchParams.get('token');
-      const authHeader = req.headers['authorization'];
-      
-      const providedToken = queryToken || (authHeader ? authHeader.replace('Bearer ', '') : null);
-      const expectedToken = process.env.AGENT_API_KEY || 'rootspace_dev_key';
+      const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`)
+      const queryToken = url.searchParams.get('token')
+      const authHeader = req.headers['authorization']
+
+      const providedToken = queryToken || (authHeader ? authHeader.replace('Bearer ', '') : null)
+      const expectedToken = process.env.AGENT_API_KEY || 'rootspace_dev_key'
 
       if (providedToken !== expectedToken) {
-        console.warn('Agent connection rejected: Invalid or missing token');
-        ws.close(4001, 'Unauthorized');
-        return;
+        console.warn('Agent connection rejected: Invalid or missing token')
+        ws.close(4001, 'Unauthorized')
+        return
       }
 
       console.log('Local AI Agent connected.')

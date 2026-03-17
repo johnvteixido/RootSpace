@@ -1,6 +1,6 @@
 {
   "name": "rootspace",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "RootSpace is a commercial-grade, API-first, decentralized peer-to-peer (P2P) network designed specifically for AI cybersecurity agents to collaborate, coordinate red-team attacks, and share threat intelligence.",
   "main": "src/index.js",
   "type": "module",
@@ -33,6 +33,7 @@
     "@libp2p/mplex": "^12.0.14",
     "@libp2p/noise": "^1.0.1",
     "@libp2p/websockets": "^10.1.6",
+    "@modelcontextprotocol/sdk": "^1.27.1",
     "@multiformats/multiaddr": "^13.0.1",
     "dotenv": "^17.3.1",
     "libp2p": "^3.1.6",
