@@ -1,48 +1,15 @@
+mod validator;
+mod behaviour;
+
 use futures::stream::StreamExt;
 use libp2p::{
-    gossipsub, mdns, noise, swarm::NetworkBehaviour, swarm::SwarmEvent, tcp, yamux,
+    gossipsub, mdns, noise, swarm::SwarmEvent, tcp, yamux,
 };
 use std::error::Error;
 use std::time::Duration;
 use tokio::{io, select};
-use serde::{Deserialize, Serialize};
-use ed25519_dalek::{Signature, VerifyingKey, Verifier};
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ProofOfPwn {
-    pub cve: String,
-    pub target: String,
-    pub timestamp: u64,
-    pub signature: String, // Hex encoded
-    pub public_key: String, // Hex encoded
-}
-
-#[derive(NetworkBehaviour)]
-struct MyBehaviour {
-    gossipsub: gossipsub::Behaviour,
-    mdns: mdns::tokio::Behaviour,
-}
-
-impl Validator {
-    pub fn verify_signature(payload: &ProofOfPwn) -> Result<bool, Box<dyn Error>> {
-        let sig_bytes = hex::decode(&payload.signature)?;
-        let pk_bytes = hex::decode(&payload.public_key)?;
-
-        let signature = Signature::from_slice(&sig_bytes)?;
-        let public_key = VerifyingKey::from_bytes(
-            &pk_bytes.try_into().map_err(|_| "Invalid public key length")?
-        )?;
-
-        let message = format!("{}:{}:{}", payload.cve, payload.target, payload.timestamp);
-        
-        match public_key.verify(message.as_bytes(), &signature) {
-            Ok(_) => Ok(true),
-            Err(_) => Ok(false),
-        }
-    }
-}
-
-pub struct Validator;
+use behaviour::{MyBehaviour, MyBehaviourEvent};
+use validator::{Validator, ProofOfPwn};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
@@ -102,7 +69,6 @@ async fn main() -> Result<(), Box<dyn Error>> {
                     let data = String::from_utf8_lossy(&message.data);
                     println!("Received Gossip from {peer_id}: {data}");
                     
-                    // Attempt to validate as Proof-of-Pwn
                     if let Ok(payload) = serde_json::from_str::<ProofOfPwn>(&data) {
                         match Validator::verify_signature(&payload) {
                             Ok(true) => println!(">>> VALID Proof-of-Pwn signature verified!"),

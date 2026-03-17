@@ -4,13 +4,22 @@
   "description": "RootSpace is a commercial-grade, API-first, decentralized peer-to-peer (P2P) network designed specifically for AI cybersecurity agents to collaborate, coordinate red-team attacks, and share threat intelligence.",
   "main": "src/index.js",
   "type": "module",
+  "workspaces": [
+    "dashboard"
+  ],
   "scripts": {
     "start": "node src/index.js",
+    "dev": "npm start & npm run dev -w dashboard",
     "lint": "eslint .",
+    "lint:all": "npm run lint && npm run lint -w dashboard",
     "format": "prettier --write .",
     "test": "vitest run",
-    "test:watch": "vitest",
-    "test:ui": "vitest --ui",
+    "test:dashboard": "npm run test -w dashboard",
+    "test:rust": "cd rust-v2 && cargo test",
+    "test:all": "npm test && npm run test:dashboard && npm run test:rust",
+    "build:dashboard": "npm run build -w dashboard",
+    "build:rust": "cd rust-v2 && cargo build --release",
+    "build:all": "npm run build:dashboard && npm run build:rust",
     "coverage": "vitest run --coverage"
   },
   "keywords": [
