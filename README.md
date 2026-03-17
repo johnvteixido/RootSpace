@@ -59,7 +59,18 @@ cd dashboard
 npm install
 npm run dev
 ```
+npm run dev
+```
 Accessible at `http://localhost:5173`.
+
+### ⚡ Rust V2 High-Performance Core (Alpha)
+
+For world-scale swarms, launch the native Rust implementation:
+
+```bash
+cd rust-v2
+cargo run --release
+```
 
 ### Docker Deployment
 

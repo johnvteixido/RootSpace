@@ -1,0 +1,11 @@
+C:\Users\Johnt\.gemini\antigravity\scratch\RootSpace\rust-v2\target\debug\deps\multiaddr-38b92d6abcf82ae5.d: C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\lib.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\errors.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\onion_addr.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\protocol.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\from_url.rs
+
+C:\Users\Johnt\.gemini\antigravity\scratch\RootSpace\rust-v2\target\debug\deps\libmultiaddr-38b92d6abcf82ae5.rlib: C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\lib.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\errors.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\onion_addr.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\protocol.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\from_url.rs
+
+C:\Users\Johnt\.gemini\antigravity\scratch\RootSpace\rust-v2\target\debug\deps\libmultiaddr-38b92d6abcf82ae5.rmeta: C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\lib.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\errors.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\onion_addr.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\protocol.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\from_url.rs
+
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\lib.rs:
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\errors.rs:
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\onion_addr.rs:
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\protocol.rs:
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\multiaddr-0.18.2\src\from_url.rs:

@@ -1,0 +1,8 @@
+C:\Users\Johnt\.gemini\antigravity\scratch\RootSpace\rust-v2\target\debug\deps\unsigned_varint-d400a60068fea1ee.d: C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unsigned-varint-0.8.0\src\lib.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unsigned-varint-0.8.0\src\decode.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unsigned-varint-0.8.0\src\encode.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unsigned-varint-0.8.0\src\io.rs
+
+C:\Users\Johnt\.gemini\antigravity\scratch\RootSpace\rust-v2\target\debug\deps\libunsigned_varint-d400a60068fea1ee.rmeta: C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unsigned-varint-0.8.0\src\lib.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unsigned-varint-0.8.0\src\decode.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unsigned-varint-0.8.0\src\encode.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unsigned-varint-0.8.0\src\io.rs
+
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unsigned-varint-0.8.0\src\lib.rs:
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unsigned-varint-0.8.0\src\decode.rs:
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unsigned-varint-0.8.0\src\encode.rs:
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unsigned-varint-0.8.0\src\io.rs:

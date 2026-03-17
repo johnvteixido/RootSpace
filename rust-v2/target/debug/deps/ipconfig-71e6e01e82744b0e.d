@@ -1,0 +1,10 @@
+C:\Users\Johnt\.gemini\antigravity\scratch\RootSpace\rust-v2\target\debug\deps\ipconfig-71e6e01e82744b0e.d: C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\lib.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\adapter.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\bindings\mod.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\bindings\win64.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\computer.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\error.rs
+
+C:\Users\Johnt\.gemini\antigravity\scratch\RootSpace\rust-v2\target\debug\deps\libipconfig-71e6e01e82744b0e.rmeta: C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\lib.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\adapter.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\bindings\mod.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\bindings\win64.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\computer.rs C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\error.rs
+
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\lib.rs:
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\adapter.rs:
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\bindings\mod.rs:
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\bindings\win64.rs:
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\computer.rs:
+C:\Users\Johnt\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\ipconfig-0.3.2\src\error.rs:
