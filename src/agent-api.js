@@ -27,41 +27,85 @@ export class AgentAPI {
       console.log(`[P2P -> Agent] Received on subnet ${topic} from ${sender}`)
 
       // Broadcast to all connected local agents
-      this.wss.clients.forEach((client) => {
-        if (client.readyState === 1 /* WebSocket.OPEN */) {
-          // In a full implementation, we'd only send to agents subscribed to this topic
-          client.send(
-            JSON.stringify({
-              type: 'p2p_message',
-              topic: topic,
-              sender: sender,
-              payload: JSON.parse(msgData),
-            })
-          )
-        }
+      this.broadcast({
+        type: 'p2p_message',
+        topic: topic,
+        sender: sender,
+        payload: JSON.parse(msgData),
       })
+    })
+
+    // Setup peer event listeners for the Human Dashboard
+    this.p2pNode.addEventListener('peer:discovery', (evt) => {
+      const peerId = evt.detail.id.toString()
+      this.broadcast({ type: 'peer_event', action: 'discovered', peerId })
+    })
+
+    this.p2pNode.addEventListener('peer:connect', (evt) => {
+      const peerId = evt.detail.toString()
+      console.log(`[P2P] Peer connected: ${peerId}`)
+      this.broadcast({ type: 'peer_event', action: 'connected', peerId })
+    })
+
+    this.p2pNode.addEventListener('peer:disconnect', (evt) => {
+      const peerId = evt.detail.toString()
+      this.broadcast({ type: 'peer_event', action: 'disconnected', peerId })
     })
 
     console.log(`Agent API WebSocket server started on ws://localhost:${port}`)
     this.handleConnections()
   }
 
+  broadcast(message) {
+    const data = JSON.stringify(message)
+    this.wss.clients.forEach((client) => {
+      if (client.readyState === 1 /* WebSocket.OPEN */) {
+        client.send(data)
+      }
+    })
+  }
+
   handleConnections() {
     this.wss.on('connection', (ws, req) => {
-      // Very basic local auth check (for demonstration, in production use real API keys via headers)
-      const token = req.headers['authorization']
-      const expectedToken = `Bearer ${process.env.AGENT_API_KEY || 'rootspace_dev_key'}`
+      // Allow token via Header or Query Parameter (for browser dashboards)
+      const url = new URL(req.url, `http://${req.headers.host}`);
+      const queryToken = url.searchParams.get('token');
+      const authHeader = req.headers['authorization'];
+      
+      const providedToken = queryToken || (authHeader ? authHeader.replace('Bearer ', '') : null);
+      const expectedToken = process.env.AGENT_API_KEY || 'rootspace_dev_key';
 
-      if (token !== expectedToken) {
-        console.warn('Agent connection rejected: Invalid Authorization header')
-        ws.close(4001, 'Unauthorized')
-        return
+      if (providedToken !== expectedToken) {
+        console.warn('Agent connection rejected: Invalid or missing token');
+        ws.close(4001, 'Unauthorized');
+        return;
       }
 
       console.log('Local AI Agent connected.')
+      let messageCount = 0
+      let lastReset = Date.now()
 
       ws.on('message', (messageAsString) => {
         try {
+          // SECURITY: Payload size limit (64KB) to prevent OOM
+          if (messageAsString.length > 65536) {
+            console.warn('Agent message rejected: Payload too large')
+            ws.send(JSON.stringify({ error: 'Payload too large', limit: '64KB' }))
+            return
+          }
+
+          // SECURITY: Simple Rate Limiting (100 req/min)
+          messageCount++
+          if (Date.now() - lastReset > 60000) {
+            messageCount = 1
+            lastReset = Date.now()
+          }
+          if (messageCount > 100) {
+            console.warn('Agent rate limited: Excessive messages')
+            ws.send(JSON.stringify({ error: 'Rate limit exceeded', limit: '100 req/min' }))
+            return
+          }
+
           const rawPayload = JSON.parse(messageAsString)
 
           // STRICT VALIDATION

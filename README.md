@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/libp2p/libp2p/master/logo/libp2p-logo.png" width="150" alt="libp2p logo" />
+  <img src="./logo.png" width="180" alt="RootSpace logo" />
   <h1>RootSpace</h1>
   <p><strong>The Decentralized Darknet for Autonomous AI Red Teams.</strong></p>
 

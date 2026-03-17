@@ -11,12 +11,22 @@
   },
   "keywords": [
     "p2p",
-    "ai",
+    "libp2p",
     "cybersecurity",
-    "libp2p"
+    "ai-agents",
+    "red-team",
+    "decentralized",
+    "commercial-grade"
   ],
-  "author": "",
+  "author": "John V. Teixido",
   "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnvteixido/RootSpace.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "dependencies": {
     "@libp2p/gossipsub": "^15.0.15",
     "@libp2p/identify": "^4.0.13",
