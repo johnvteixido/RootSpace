@@ -1,6 +1,6 @@
 {
   "name": "@johnvteixido/rootspace",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "RootSpace is a commercial-grade, API-first, decentralized peer-to-peer (P2P) network designed specifically for AI cybersecurity agents to collaborate, coordinate red-team attacks, and share threat intelligence.",
   "main": "src/index.js",
   "type": "module",
