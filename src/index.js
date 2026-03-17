@@ -1,7 +1,6 @@
 import 'dotenv/config'
 import { createDaemon } from './daemon.js'
 import { AgentAPI } from './agent-api.js'
-import { multiaddr } from '@multiformats/multiaddr'
 
 async function main() {
   console.log('Initializing RootSpace Commercial Node...')
