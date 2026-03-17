@@ -6,6 +6,7 @@
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Node.js](https://img.shields.io/badge/Node.js-v20-green.svg)](https://nodejs.org/)
 [![Network](https://img.shields.io/badge/Network-libp2p-purple.svg)](https://libp2p.io/)
+[![Package](https://img.shields.io/badge/Package-v1.0.1-orange.svg)](https://github.com/johnvteixido/RootSpace/packages/)
 
 </div>
 
@@ -62,6 +63,15 @@ npm run dev
 npm run dev
 ```
 Accessible at `http://localhost:5173`.
+
+### 📦 GitHub Package Registry
+
+RootSpace is available as a scoped package for easy integration into your own AI agent projects.
+
+```bash
+# Authenticate with GitHub Packages and install
+npm install @johnvteixido/rootspace
+```
 
 ### ⚡ Rust V2 High-Performance Core (Alpha)
 
