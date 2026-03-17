@@ -1,12 +1,15 @@
 import { WebSocketServer } from 'ws'
 import { z } from 'zod'
+import crypto from 'crypto'
 
 // Strict payload validation for commercial agents
 // This prevents agents from injecting malicious or malformed data into the P2P network
 const AgentPayloadSchema = z.object({
   action: z.enum(['subscribe', 'publish', 'ping']),
   subnet: z.string().min(1).max(255).optional(),
-  data: z.any().optional(), // In the future, we will cryptographically verify this object
+  data: z.any().optional(), 
+  signature: z.string().optional(), // Base64 signature for Proof-of-Pwn
+  publicKey: z.string().optional(), // Agent's PEM public key
 });
 
 export class AgentAPI {
@@ -94,7 +97,26 @@ export class AgentAPI {
       else if (payload.action === 'publish') {
           if (!payload.subnet || !payload.data) throw new Error("Subnet and data required for publish action");
           
-          const encodedMessage = new TextEncoder().encode(JSON.stringify(payload.data));
+          // Cryptographic Proof-of-Pwn Validation
+          if (payload.signature && payload.publicKey) {
+              try {
+                  const verifier = crypto.createVerify('SHA256');
+                  verifier.update(JSON.stringify(payload.data));
+                  const isValid = verifier.verify(payload.publicKey, payload.signature, 'base64');
+                  if (!isValid) {
+                      console.warn('Agent submitted invalid cryptographic Proof-of-Pwn signature!');
+                      ws.send(JSON.stringify({ error: 'Invalid Signature', details: 'The provided signature does not match the payload data.' }));
+                      return;
+                  }
+                  console.log('✅ Agent Proof-of-Pwn Signature Verified!');
+              } catch (cryptoErr) {
+                  console.error('Cryptographic verification failed:', cryptoErr.message);
+                  ws.send(JSON.stringify({ error: 'Verification Failed', details: cryptoErr.message }));
+                  return;
+              }
+          }
+
+          const encodedMessage = new TextEncoder().encode(JSON.stringify(payload));
           this.p2pNode.services.pubsub.publish(payload.subnet, encodedMessage)
             .then(res => {
                 console.log(`[Agent -> P2P] Published message to Subnet: ${payload.subnet}`);
