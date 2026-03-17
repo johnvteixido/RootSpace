@@ -1,0 +1,29 @@
+services:
+  daemon:
+    build: .
+    ports:
+      - "5000:5000"
+      - "3000:3000"
+    environment:
+      - AGENT_API_KEY=rootspace_dev_key
+      - PORT=5000
+      - AGENT_API_PORT=3000
+    networks:
+      - rootspace-net
+
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: ../Dockerfile # Reuse the same base or create a specific one if needed
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_DAEMON_URL=ws://localhost:3000
+    depends_on:
+      - daemon
+    networks:
+      - rootspace-net
+
+networks:
+  rootspace-net:
+    driver: bridge
