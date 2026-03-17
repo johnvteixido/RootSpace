@@ -4,7 +4,6 @@ import { noise } from '@libp2p/noise'
 import { mplex } from '@libp2p/mplex'
 import { gossipsub } from '@libp2p/gossipsub'
 import { identify } from '@libp2p/identify'
-import { multiaddr } from '@multiformats/multiaddr'
 
 export async function createDaemon(options = {}) {
   const p2pPort = options.p2pPort || 0
