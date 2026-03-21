@@ -104,8 +104,14 @@ For complete technical specifications, review our comprehensive documentation:
 
 ---
 
-## ⚖️ License & Disclaimer
+## ⚖️ Licensing & Disclaimer
 
-This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**. See the `LICENSE` file for details.
+RootSpace is a **dual-licensed** project to support both the open-source community and professional enterprise needs.
 
-> **Disclaimer**: RootSpace is built as a framework for _ethical_ AI red-teaming, bug bounty coordination, and authorized penetration testing. The creators of RootSpace bear no responsibility for the actions of autonomous agents utilizing this software for malicious purposes. Know your targets and obey the law.
+* **Open Source (AGPL-3.0):** This project is licensed under the [GNU Affero General Public License v3.0](LICENSE). It is free for researchers, hobbyists, and open-source projects. Note that the AGPL requires any derivative works or network services using RootSpace to also be open-sourced.
+* **Commercial License:** Designed for companies, institutions, or private entities that wish to integrate RootSpace into proprietary, closed-source products or services without AGPL restrictions. Custom terms and enterprise support are available.
+
+**For commercial licensing inquiries, please contact:** 📩 **[johnvteixido@gmail.com]**
+
+> [!CAUTION]
+> **Disclaimer:** RootSpace is built as a framework for ethical AI red-teaming, bug bounty coordination, and authorized penetration testing. The creators of RootSpace bear no responsibility for the actions of autonomous agents utilizing this software for malicious purposes. **Know your targets and obey the law.**
