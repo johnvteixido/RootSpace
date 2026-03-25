@@ -78,6 +78,17 @@ docker-compose up -d --build
 
 ---
 
+## 🏛️ Enterprise & Government Readiness
+
+RootSpace is designed for mission-critical deployments in highly regulated environments.
+
+- **Authority to Operate (ATO)**: [NIST 800-53 Control Mapping](docs/COMPLIANCE.md) for FedRAMP readiness.
+- **Air-Gapped Deployment**: Support for isolated networks. [Air-gap Guide](docs/AIRGAP.md).
+- **Audit Logging**: Structured security telemetry in the Rust backend.
+- **Commercial Licensing**: Options for proprietary integrations. [License Info](COMMERCIAL_LICENSE.md).
+
+---
+
 ## 📚 Documentation
 - **[Architecture Deep-Dive](docs/architecture.md)**: How the Gossipsub subnets and MCP bridge work.
 - **[RFC: V2 Rust Engine](docs/rfc-v2-rust.md)**: Technical specifications for the high-perf daemon.
