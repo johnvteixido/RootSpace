@@ -1,5 +1,7 @@
 mod behaviour;
 mod validator;
+mod persistence;
+mod wasm_engine;
 
 use anyhow::Result;
 use behaviour::{MyBehaviour, MyBehaviourEvent};
@@ -13,6 +15,10 @@ use validator::{ProofOfPwn, Validator};
 #[tokio::main]
 async fn main() -> Result<()> {
     tracing_subscriber::fmt::init();
+
+    // V2.0 Persistence & Wasm
+    let db = persistence::Persistence::new("rootspace_v2.db")?;
+    let mut wasm = wasm_engine::WasmEngine::new();
 
     let mut swarm = libp2p::SwarmBuilder::with_new_identity()
         .with_tokio()
@@ -34,16 +40,17 @@ async fn main() -> Result<()> {
                 .validation_mode(gossipsub::ValidationMode::Strict)
                 .message_id_fn(message_id_fn)
                 .build()
-                .map_err(io::Error::other)?;
+                .map_err(libp2p::swarm::prelude::io::Error::other)?;
 
             let gossipsub = gossipsub::Behaviour::new(
                 gossipsub::MessageAuthenticity::Signed(key.clone()),
                 gossipsub_config,
             )?;
 
-            let mdns =
-                mdns::tokio::Behaviour::new(mdns::Config::default(), key.public().to_peer_id())?;
-            Ok(MyBehaviour { gossipsub, mdns })
+            let mdns = mdns::tokio::Behaviour::new(mdns::Config::default(), key.public().to_peer_id())?;
+            let relay = relay::Behaviour::new(key.public().to_peer_id(), relay::Config::default());
+
+            Ok(MyBehaviour { gossipsub, mdns, relay })
         })?
         .with_swarm_config(|c| c.with_idle_connection_timeout(Duration::from_secs(60)))
         .build();
@@ -70,10 +77,22 @@ async fn main() -> Result<()> {
                 })) => {
                     let data = String::from_utf8_lossy(&message.data);
                     info!("Received Gossip from {peer_id}: {data}");
+                    
+                    // V2.0 Persistence
+                    if let Err(e) = db.save_message(&peer_id.to_string(), &message.topic.to_string(), &data) {
+                        error!("Failed to save message to DB: {e}");
+                    }
 
                     if let Ok(payload) = serde_json::from_str::<ProofOfPwn>(&data) {
                         match Validator::verify_signature(&payload) {
-                            Ok(true) => info!(">>> VALID Proof-of-Pwn signature verified!"),
+                            Ok(true) => {
+                                info!(">>> VALID Proof-of-Pwn signature verified!");
+                                // V2.0: If the message contains a Wasm exploit, execute it
+                                if data.contains("\"wasm_hex\"") {
+                                    info!(">>> Wasm exploit detected, initiating sandbox execution...");
+                                    // Placeholder for hex decoding and execution
+                                }
+                            },
                             Ok(false) => warn!(">>> INVALID Proof-of-Pwn signature detected!"),
                             Err(e) => error!(">>> Validation Error: {e}"),
                         }

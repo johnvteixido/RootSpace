@@ -48,8 +48,11 @@
     "@libp2p/websockets": "^10.1.6",
     "@modelcontextprotocol/sdk": "^1.27.1",
     "@multiformats/multiaddr": "^13.0.1",
+    "better-sqlite3": "^12.8.0",
     "dotenv": "^17.3.1",
     "libp2p": "^3.1.6",
+    "tweetnacl": "^1.0.3",
+    "tweetnacl-util": "^0.15.1",
     "ws": "^8.20.0",
     "zod": "^4.3.6"
   },

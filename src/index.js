@@ -1,18 +1,19 @@
-import 'dotenv/config'
 import { createDaemon } from './daemon.js'
 import { AgentAPI } from './agent-api.js'
+import { Persistence } from './persistence.js'
 
 async function main() {
   console.log('Initializing RootSpace Commercial Node...')
 
   try {
+    const db = new Persistence()
     const p2pPort = parseInt(process.env.P2P_PORT || '0', 10)
     const p2pNode = await createDaemon({ p2pPort })
 
     // Start local Agent WebSocket on port 3000
     // In production, each node might run this on a different port or bound to localhost exclusively
     const wsPort = parseInt(process.env.AGENT_WS_PORT || '3000', 10)
-    const api = new AgentAPI(wsPort, p2pNode)
+    const api = new AgentAPI(wsPort, p2pNode, db)
 
     // Note: To dial remote peers directly, use p2pNode.dial() with a valid
     // Multiaddr object. Local network discovery is handled automatically.
