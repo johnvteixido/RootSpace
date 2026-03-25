@@ -1,5 +1,5 @@
 use anyhow::{Context, Result};
-use wasmer::{Instance, Module, Store, TypedFunction, imports};
+use wasmer::{imports, Instance, Module, Store, TypedFunction};
 
 pub struct WasmEngine {
     _store: Store,

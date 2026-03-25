@@ -66,7 +66,8 @@ async fn main() -> Result<()> {
     swarm.listen_on("/ip4/0.0.0.0/tcp/0".parse()?)?;
 
     info!("RootSpace V2 Daemon (Rust) - High-Performance Node Started");
-    let _ = db.log_audit_event("SYSTEM", "DAEMON", "STARTUP", "SUCCESS");
+    db.log_audit_event("SYSTEM", "DAEMON", "STARTUP", "SUCCESS")
+        .ok();
 
     loop {
         select! {
@@ -74,7 +75,7 @@ async fn main() -> Result<()> {
                 SwarmEvent::Behaviour(MyBehaviourEvent::Mdns(mdns::Event::Discovered(list))) => {
                     for (peer_id, _multiaddr) in list {
                         info!("Discovered peer: {peer_id}");
-                        let _ = db.log_audit_event("NETWORK", &peer_id.to_string(), "PEER_DISCOVERED", "SUCCESS");
+                        db.log_audit_event("NETWORK", &peer_id.to_string(), "PEER_DISCOVERED", "SUCCESS").ok();
                         swarm.behaviour_mut().gossipsub.add_explicit_peer(&peer_id);
                     }
                 },
@@ -95,28 +96,28 @@ async fn main() -> Result<()> {
                         match Validator::verify_signature(&payload) {
                             Ok(true) => {
                                 info!(">>> VALID Proof-of-Pwn signature verified!");
-                                let _ = db.log_audit_event("SECURITY", &peer_id.to_string(), "SIGNATURE_VERIFICATION", "VALID");
+                                db.log_audit_event("SECURITY", &peer_id.to_string(), "SIGNATURE_VERIFICATION", "VALID").ok();
                                 // V2.0: If the message contains a Wasm exploit, execute it
                                 if data.contains("\"wasm_hex\"") {
                                     info!(">>> Wasm exploit detected, initiating sandbox execution...");
-                                    let _ = db.log_audit_event("AGENT_ACTION", &peer_id.to_string(), "WASM_EXECUTION_ATTEMPT", "INITIATED");
+                                    db.log_audit_event("AGENT_ACTION", &peer_id.to_string(), "WASM_EXECUTION_ATTEMPT", "INITIATED").ok();
                                     // Placeholder for hex decoding and execution
                                 }
                             },
                             Ok(false) => {
                                 warn!(">>> INVALID Proof-of-Pwn signature detected!");
-                                let _ = db.log_audit_event("SECURITY", &peer_id.to_string(), "SIGNATURE_VERIFICATION", "INVALID");
+                                db.log_audit_event("SECURITY", &peer_id.to_string(), "SIGNATURE_VERIFICATION", "INVALID").ok();
                             },
                             Err(e) => {
                                 error!(">>> Validation Error: {e}");
-                                let _ = db.log_audit_event("SECURITY", &peer_id.to_string(), "SIGNATURE_VERIFICATION_ERROR", &e.to_string());
+                                db.log_audit_event("SECURITY", &peer_id.to_string(), "SIGNATURE_VERIFICATION_ERROR", &e.to_string()).ok();
                             },
                         }
                     }
                 },
                 SwarmEvent::NewListenAddr { address, .. } => {
                     info!("Daemon listening on {address}");
-                    let _ = db.log_audit_event("NETWORK", "DAEMON", "LISTEN_START", &address.to_string());
+                    db.log_audit_event("NETWORK", "DAEMON", "LISTEN_START", &address.to_string()).ok();
                 }
                 _ => {}
             }

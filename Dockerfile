@@ -1,6 +1,6 @@
 # Stage 1: Build Rust Backend
-FROM rust:1.80-alpine AS rust-builder
-RUN apk add --no-cache musl-dev gcc g++ make protobuf-dev
+FROM rust:1.80-slim-bullseye AS rust-builder
+RUN apt-get update && apt-get install -y libsqlite3-dev protobuf-compiler
 WORKDIR /usr/src/rootspace-rust
 COPY rust-v2/ ./
 RUN cargo build --release
