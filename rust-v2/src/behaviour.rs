@@ -1,6 +1,4 @@
-use libp2p::{
-    gossipsub, mdns, swarm::NetworkBehaviour,
-};
+use libp2p::{gossipsub, mdns, swarm::NetworkBehaviour};
 
 #[derive(NetworkBehaviour)]
 pub struct MyBehaviour {

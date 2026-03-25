@@ -1,18 +1,19 @@
-mod validator;
 mod behaviour;
+mod validator;
 
+use anyhow::Result;
+use behaviour::{MyBehaviour, MyBehaviourEvent};
 use futures::stream::StreamExt;
-use libp2p::{
-    gossipsub, mdns, noise, swarm::SwarmEvent, tcp, yamux,
-};
-use std::error::Error;
+use libp2p::{gossipsub, mdns, noise, swarm::SwarmEvent, tcp, yamux};
 use std::time::Duration;
 use tokio::{io, select};
-use behaviour::{MyBehaviour, MyBehaviourEvent};
-use validator::{Validator, ProofOfPwn};
+use tracing::{error, info, warn};
+use validator::{ProofOfPwn, Validator};
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn Error>> {
+async fn main() -> Result<()> {
+    tracing_subscriber::fmt::init();
+
     let mut swarm = libp2p::SwarmBuilder::with_new_identity()
         .with_tokio()
         .with_tcp(
@@ -33,14 +34,15 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 .validation_mode(gossipsub::ValidationMode::Strict)
                 .message_id_fn(message_id_fn)
                 .build()
-                .map_err(|msg| io::Error::new(io::ErrorKind::Other, msg))?;
+                .map_err(|msg| io::Error::other(msg))?;
 
             let gossipsub = gossipsub::Behaviour::new(
                 gossipsub::MessageAuthenticity::Signed(key.clone()),
                 gossipsub_config,
             )?;
 
-            let mdns = mdns::tokio::Behaviour::new(mdns::Config::default(), key.public().to_peer_id())?;
+            let mdns =
+                mdns::tokio::Behaviour::new(mdns::Config::default(), key.public().to_peer_id())?;
             Ok(MyBehaviour { gossipsub, mdns })
         })?
         .with_swarm_config(|c| c.with_idle_connection_timeout(Duration::from_secs(60)))
@@ -51,7 +53,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     swarm.listen_on("/ip4/0.0.0.0/tcp/0".parse()?)?;
 
-    println!("RootSpace V2 Daemon (Rust) - High-Performance Node Started");
+    info!("RootSpace V2 Daemon (Rust) - High-Performance Node Started");
 
     loop {
         select! {
@@ -67,18 +69,18 @@ async fn main() -> Result<(), Box<dyn Error>> {
                     ..
                 })) => {
                     let data = String::from_utf8_lossy(&message.data);
-                    println!("Received Gossip from {peer_id}: {data}");
-                    
+                    info!("Received Gossip from {peer_id}: {data}");
+
                     if let Ok(payload) = serde_json::from_str::<ProofOfPwn>(&data) {
                         match Validator::verify_signature(&payload) {
-                            Ok(true) => println!(">>> VALID Proof-of-Pwn signature verified!"),
-                            Ok(false) => println!(">>> INVALID Proof-of-Pwn signature detected!"),
-                            Err(e) => println!(">>> Validation Error: {e}"),
+                            Ok(true) => info!(">>> VALID Proof-of-Pwn signature verified!"),
+                            Ok(false) => warn!(">>> INVALID Proof-of-Pwn signature detected!"),
+                            Err(e) => error!(">>> Validation Error: {e}"),
                         }
                     }
                 },
                 SwarmEvent::NewListenAddr { address, .. } => {
-                    println!("Daemon listening on {address}");
+                    info!("Daemon listening on {address}");
                 }
                 _ => {}
             }
