@@ -19,8 +19,8 @@ For government agencies, contractors, and enterprises that cannot comply with th
 To inquire about a commercial license or to discuss specific government procurement requirements (e.g., GSA Schedule, SEWP), please contact:
 
 **Sales & Licensing Team**
-Email: sales@rootspace.ai (Placeholder)
-Website: [https://rootspace.ai/enterprise](https://rootspace.ai/enterprise)
+Email: johnvteixido@gmail.com (Placeholder)
+Website: [www.linkedin.com/in/johnvteixido](www.linkedin.com/in/johnvteixido)
 
 ---
 
