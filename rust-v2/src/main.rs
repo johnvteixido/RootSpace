@@ -34,7 +34,7 @@ async fn main() -> Result<()> {
                 .validation_mode(gossipsub::ValidationMode::Strict)
                 .message_id_fn(message_id_fn)
                 .build()
-                .map_err(|msg| io::Error::other(msg))?;
+                .map_err(io::Error::other)?;
 
             let gossipsub = gossipsub::Behaviour::new(
                 gossipsub::MessageAuthenticity::Signed(key.clone()),
