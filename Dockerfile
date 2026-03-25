@@ -1,5 +1,5 @@
 # Stage 1: Build Rust Backend
-FROM rust:1.80-bullseye AS rust-builder
+FROM rust:1.83-bullseye AS rust-builder
 RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
     protobuf-compiler \
