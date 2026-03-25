@@ -73,7 +73,13 @@ export class AgentAPI {
       const authHeader = req.headers['authorization']
 
       const providedToken = queryToken || (authHeader ? authHeader.replace('Bearer ', '') : null)
-      const expectedToken = process.env.AGENT_API_KEY || 'rootspace_dev_key'
+      const expectedToken = process.env.AGENT_API_KEY
+
+      if (!expectedToken) {
+        console.error('CRITICAL: AGENT_API_KEY is not set in environment.')
+        ws.close(1011, 'Internal Server Error')
+        return
+      }
 
       if (providedToken !== expectedToken) {
         console.warn('Agent connection rejected: Invalid or missing token')

@@ -1,0 +1,6 @@
+node_modules/
+rust-v2/target/
+.env
+*.log
+coverage/
+.git/

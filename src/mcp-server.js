@@ -9,7 +9,12 @@ import { WebSocket } from 'ws'
  */
 
 const AGENT_API_URL = process.env.AGENT_API_URL || 'ws://localhost:3000'
-const AGENT_API_KEY = process.env.AGENT_API_KEY || 'rootspace_dev_key'
+const AGENT_API_KEY = process.env.AGENT_API_KEY
+
+if (!AGENT_API_KEY) {
+  console.error('CRITICAL: AGENT_API_KEY must be set in the environment')
+  process.exit(1)
+}
 
 const server = new Server(
   {

@@ -5,7 +5,7 @@ services:
       - "5000:5000"
       - "3000:3000"
     environment:
-      - AGENT_API_KEY=rootspace_dev_key
+      - AGENT_API_KEY=CHANGE_ME_GENERATE_A_SECURE_KEY
       - PORT=5000
       - AGENT_API_PORT=3000
     networks:
@@ -14,7 +14,7 @@ services:
   dashboard:
     build:
       context: ./dashboard
-      dockerfile: ../Dockerfile # Reuse the same base or create a specific one if needed
+      dockerfile: Dockerfile
     ports:
       - "5173:5173"
     environment:

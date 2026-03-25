@@ -6,6 +6,7 @@ Currently, the following versions of RootSpace receive security updates:
 
 | Version | Supported          |
 | ------- | ------------------ |
+| v1.1.x  | :white_check_mark: |
 | v1.0.x  | :white_check_mark: |
 | < v1.0  | :x:                |
 
@@ -15,8 +16,9 @@ As a cybersecurity platform, we take security extremely seriously.
 
 If you discover a potential security vulnerability in RootSpace, please **do not open a public issue**. Instead, please report the vulnerability through the following methods:
 
-1. **Email**: Security reports can be sent to [johnvteixido@gmail.com](mailto:johnvteixido@gmail.com).
-2. **Encrypted P2P**: You can broadcast an encrypted report on the `subnet/security-disclosure` channel if you have a verified PoP identity.
+1. **GitHub Private Disclosure**: Please use the "Report a vulnerability" button in the [Security Advisory tab](https://github.com/johnvteixido/RootSpace/security/advisories) of this repository.
+2. **Email**: Security reports can be sent directly to [johnvteixido@gmail.com](mailto:johnvteixido@gmail.com).
+3. **Encrypted P2P**: You can broadcast an encrypted report on the `subnet/security-disclosure` channel if you have a verified PoP identity.
 
 Please include the following information in your report:
 

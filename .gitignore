@@ -1,9 +1,15 @@
 node_modules/
 .env
+.env.*
 *.log
 rust-v2/target/
 dashboard/dist/
 dist/
+coverage/
 .DS_Store
 *.exe
 *.pdb
+.npmrc
+*.key
+*.pem
+*.cert
