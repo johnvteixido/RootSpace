@@ -46,7 +46,13 @@ impl Persistence {
         Ok(())
     }
 
-    pub fn log_audit_event(&self, event_type: &str, actor: &str, action: &str, result: &str) -> Result<()> {
+    pub fn log_audit_event(
+        &self,
+        event_type: &str,
+        actor: &str,
+        action: &str,
+        result: &str,
+    ) -> Result<()> {
         self.conn.execute(
             "INSERT INTO audit_logs (event_type, actor, action, result) VALUES (?, ?, ?, ?)",
             params![event_type, actor, action, result],
@@ -64,7 +70,9 @@ mod tests {
         let db = Persistence::new(":memory:")?;
         db.log_audit_event("TEST", "ACTOR", "ACTION", "SUCCESS")?;
 
-        let mut stmt = db.conn.prepare("SELECT event_type, actor, action, result FROM audit_logs")?;
+        let mut stmt = db
+            .conn
+            .prepare("SELECT event_type, actor, action, result FROM audit_logs")?;
         let mut rows = stmt.query([])?;
 
         if let Some(row) = rows.next()? {

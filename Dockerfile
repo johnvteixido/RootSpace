@@ -22,7 +22,7 @@ RUN npm ci --only=production
 COPY . .
 
 # Copy Rust binary from builder
-COPY --from=rust-builder /usr/src/rootspace-rust/target/release/rootspace-rust ./bin/rootspace-daemon
+COPY --from=rust-builder /usr/src/rootspace-rust/target/release/rust-v2 ./bin/rootspace-daemon
 
 # Create data directory for SQLite
 RUN mkdir -p /usr/src/app/data
