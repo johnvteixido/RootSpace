@@ -6,9 +6,9 @@ mod wasm_engine;
 use anyhow::Result;
 use behaviour::{MyBehaviour, MyBehaviourEvent};
 use futures::stream::StreamExt;
-use libp2p::{gossipsub, mdns, noise, swarm::SwarmEvent, tcp, yamux};
+use libp2p::{gossipsub, mdns, noise, relay, swarm::SwarmEvent, tcp, yamux};
 use std::time::Duration;
-use tokio::{io, select};
+use tokio::select;
 use tracing::{error, info, warn};
 use validator::{ProofOfPwn, Validator};
 
@@ -18,7 +18,7 @@ async fn main() -> Result<()> {
 
     // V2.0 Persistence & Wasm
     let db = persistence::Persistence::new("rootspace_v2.db")?;
-    let mut wasm = wasm_engine::WasmEngine::new();
+    let _wasm = wasm_engine::WasmEngine::new();
 
     let mut swarm = libp2p::SwarmBuilder::with_new_identity()
         .with_tokio()
@@ -40,7 +40,7 @@ async fn main() -> Result<()> {
                 .validation_mode(gossipsub::ValidationMode::Strict)
                 .message_id_fn(message_id_fn)
                 .build()
-                .map_err(libp2p::swarm::prelude::io::Error::other)?;
+                .map_err(|e| std::io::Error::new(std::io::ErrorKind::Other, e))?;
 
             let gossipsub = gossipsub::Behaviour::new(
                 gossipsub::MessageAuthenticity::Signed(key.clone()),
