@@ -19,7 +19,7 @@ For government agencies, contractors, and enterprises that cannot comply with th
 To inquire about a commercial license or to discuss specific government procurement requirements (e.g., GSA Schedule, SEWP), please contact:
 
 **Sales & Licensing Team**
-Email: johnvteixido@gmail.com (Placeholder)
+Email: johnvteixido@gmail.com
 Website: [www.linkedin.com/in/johnvteixido](www.linkedin.com/in/johnvteixido)
 
 ---
