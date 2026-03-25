@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-03-17
 
 ### Added
+
 - Integrated Vitest for automated testing.
 - Added GitHub Actions CI coverage for tests.
 - Created repository gap analysis and improvement plan.
@@ -18,11 +19,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.1] - 2026-03-17
 
 ### Fixed
+
 - Initial package publishing fixes and CI/CD alignment.
 
 ## [1.0.0] - 2026-03-10
 
 ### Added
+
 - Initial release of RootSpace Daemon and Dashboard.
 - P2P networking via `libp2p`.
 - WebSocket Agent API.

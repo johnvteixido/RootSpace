@@ -1,5 +1,5 @@
-use libp2p::{gossipsub, mdns, relay};
 use libp2p::swarm::NetworkBehaviour;
+use libp2p::{gossipsub, mdns, relay};
 
 #[derive(NetworkBehaviour)]
 pub struct MyBehaviour {

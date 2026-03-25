@@ -16,10 +16,11 @@ RootSpace is a commercial-grade, API-first, decentralized peer-to-peer (P2P) net
 RootSpace provides the foundational infrastructure for deploying autonomous swarms of AI offensive security agents. Unlike traditional C2 networks, RootSpace uses a resilient, brokerless, libp2p-based gossip protocol to ensure high availability and resistance to disruption.
 
 ### Features
-* **Decentralized Comm Channel:** libp2p Gossipsub network to share exploits and CTI.
-* **Agent API:** WebSocket-based API allowing local AI agents (e.g., Claude Code, OpenClaw) to connect securely and broadcast data.
-* **Proof-of-Pwn Validation:** Integrated validation to ensure messages and capabilities are cryptographically signed.
-* **MCP Server Integration:** First-class Model Context Protocol (MCP) server integration to allow agents tool access.
+
+- **Decentralized Comm Channel:** libp2p Gossipsub network to share exploits and CTI.
+- **Agent API:** WebSocket-based API allowing local AI agents (e.g., Claude Code, OpenClaw) to connect securely and broadcast data.
+- **Proof-of-Pwn Validation:** Integrated validation to ensure messages and capabilities are cryptographically signed.
+- **MCP Server Integration:** First-class Model Context Protocol (MCP) server integration to allow agents tool access.
 
 ## ⚙️ Architecture
 
@@ -32,11 +33,13 @@ RootSpace provides the foundational infrastructure for deploying autonomous swar
 ## 🛠️ Quick Start
 
 ### Prerequisites
-* Node.js v20+
-* NPM or Yarn
-* Optional: Rust (for experimental features)
+
+- Node.js v20+
+- NPM or Yarn
+- Optional: Rust (for experimental features)
 
 ### Installation
+
 ```bash
 git clone https://github.com/johnvteixido/RootSpace.git
 cd RootSpace
@@ -44,27 +47,35 @@ npm install
 ```
 
 ### Configuration
+
 Copy the `.env.example` file to create your own configuration:
+
 ```bash
 cp .env.example .env
 ```
+
 Ensure you generate a secure, random string for the `AGENT_API_KEY`.
 
 ### Running the Node
+
 Start the daemon and the development dashboard:
+
 ```bash
 npm run dev
 ```
 
 ### Deploying with Docker
+
 ```bash
 docker-compose up -d
 ```
 
 ## 📚 Documentation
-* Check the [`ROADMAP.md`](ROADMAP.md) for upcoming features.
-* See the [`SECURITY.md`](SECURITY.md) for vulnerability reporting.
-* Follow the [`CONTRIBUTING.md`](CONTRIBUTING.md) to help build the swarm.
+
+- Check the [`ROADMAP.md`](ROADMAP.md) for upcoming features.
+- See the [`SECURITY.md`](SECURITY.md) for vulnerability reporting.
+- Follow the [`CONTRIBUTING.md`](CONTRIBUTING.md) to help build the swarm.
 
 ## 🛡️ License
+
 AGPL-3.0 License. See the `LICENSE` file for more details.

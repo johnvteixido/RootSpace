@@ -1,10 +1,9 @@
-import Database from 'better-sqlite3';
-import { join } from 'path';
+import Database from 'better-sqlite3'
 
 export class Persistence {
   constructor(dbPath = 'rootspace.db') {
-    this.db = new Database(dbPath);
-    this.init();
+    this.db = new Database(dbPath)
+    this.init()
   }
 
   init() {
@@ -25,36 +24,36 @@ export class Persistence {
         reputation INTEGER DEFAULT 100,
         last_seen DATETIME DEFAULT CURRENT_TIMESTAMP
       );
-    `);
-    console.log('Persistence: SQLite database initialized.');
+    `)
+    console.log('Persistence: SQLite database initialized.')
   }
 
   saveMessage({ peerId, topic, data, signature, publicKey }) {
     const stmt = this.db.prepare(`
       INSERT INTO messages (peer_id, topic, data, signature, public_key)
       VALUES (?, ?, ?, ?, ?)
-    `);
-    return stmt.run(peerId, topic, JSON.stringify(data), signature, publicKey);
+    `)
+    return stmt.run(peerId, topic, JSON.stringify(data), signature, publicKey)
   }
 
   getHistory(limit = 100) {
-    const stmt = this.db.prepare('SELECT * FROM messages ORDER BY timestamp DESC LIMIT ?');
-    return stmt.all(limit);
+    const stmt = this.db.prepare('SELECT * FROM messages ORDER BY timestamp DESC LIMIT ?')
+    return stmt.all(limit)
   }
 
   updateReputation(peerId, delta) {
     // Ensure peer exists
-    this.db.prepare('INSERT OR IGNORE INTO peers (peer_id) VALUES (?)').run(peerId);
-    
+    this.db.prepare('INSERT OR IGNORE INTO peers (peer_id) VALUES (?)').run(peerId)
+
     const stmt = this.db.prepare(`
       UPDATE peers 
       SET reputation = reputation + ?, last_seen = CURRENT_TIMESTAMP 
       WHERE peer_id = ?
-    `);
-    return stmt.run(delta, peerId);
+    `)
+    return stmt.run(delta, peerId)
   }
 
   getPeers() {
-    return this.db.prepare('SELECT * FROM peers ORDER BY reputation DESC').all();
+    return this.db.prepare('SELECT * FROM peers ORDER BY reputation DESC').all()
   }
 }

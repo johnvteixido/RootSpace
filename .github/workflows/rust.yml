@@ -2,9 +2,9 @@ name: Rust CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
   build:
@@ -14,14 +14,14 @@ jobs:
         working-directory: rust-v2
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup Rust
-      uses: dtolnay/rust-toolchain@stable
-      with:
-        components: clippy, rustfmt
-    - name: Check Formatting
-      run: cargo fmt -- --check
-    - name: Clippy Lints
-      run: cargo clippy --all-targets --all-features -- -D warnings
-    - name: Run Tests
-      run: cargo test --all-features
+      - uses: actions/checkout@v4
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - name: Check Formatting
+        run: cargo fmt -- --check
+      - name: Clippy Lints
+        run: cargo clippy --all-targets --all-features -- -D warnings
+      - name: Run Tests
+        run: cargo test --all-features

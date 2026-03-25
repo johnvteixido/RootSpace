@@ -12,11 +12,13 @@ const AgentPayloadSchema = z.object({
   data: z.any().optional(),
   signature: z.string().optional(), // Base64 signature for Proof-of-Pwn
   publicKey: z.string().optional(), // Agent's PEM public key
-  e2ee: z.object({
-    recipientPublicKey: z.string(),
-    senderPrivateKey: z.string(), // Local agent should provide this for outbound
-    nonce: z.string().optional()
-  }).optional()
+  e2ee: z
+    .object({
+      recipientPublicKey: z.string(),
+      senderPrivateKey: z.string(), // Local agent should provide this for outbound
+      nonce: z.string().optional(),
+    })
+    .optional(),
 })
 
 export class AgentAPI {
@@ -189,7 +191,7 @@ export class AgentAPI {
           const verifier = crypto.createVerify('SHA256')
           verifier.update(JSON.stringify(payload.data))
           const isValid = verifier.verify(payload.publicKey, payload.signature, 'base64')
-          
+
           if (!isValid) {
             console.warn('Agent submitted invalid cryptographic Proof-of-Pwn signature!')
             // Reputation: Decrease for bad signature

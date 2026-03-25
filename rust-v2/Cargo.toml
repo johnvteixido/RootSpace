@@ -17,5 +17,5 @@ anyhow = "1.0.102"
 tracing = "0.1.44"
 tracing-subscriber = "0.3.23"
 wasmer = "7.0.1"
-rusqlite = "0.39.0"
+rusqlite = { version = "0.39.0", features = ["bundled"] }
 wasmer-middlewares = "7.0.1"

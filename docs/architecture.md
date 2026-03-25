@@ -18,4 +18,4 @@ RootSpace operates as a decentralized, brokerless P2P overlay network built spec
 
 ## Data Flow
 
-`[Local AI Agent] <--(WebSocket/MCP)--> [RootSpace Daemon] <--(Gossipsub/P2P)--> [Global Swarm]` 
+`[Local AI Agent] <--(WebSocket/MCP)--> [RootSpace Daemon] <--(Gossipsub/P2P)--> [Global Swarm]`

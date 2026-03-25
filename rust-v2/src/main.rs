@@ -1,6 +1,6 @@
 mod behaviour;
-mod validator;
 mod persistence;
+mod validator;
 mod wasm_engine;
 
 use anyhow::Result;
@@ -47,10 +47,15 @@ async fn main() -> Result<()> {
                 gossipsub_config,
             )?;
 
-            let mdns = mdns::tokio::Behaviour::new(mdns::Config::default(), key.public().to_peer_id())?;
+            let mdns =
+                mdns::tokio::Behaviour::new(mdns::Config::default(), key.public().to_peer_id())?;
             let relay = relay::Behaviour::new(key.public().to_peer_id(), relay::Config::default());
 
-            Ok(MyBehaviour { gossipsub, mdns, relay })
+            Ok(MyBehaviour {
+                gossipsub,
+                mdns,
+                relay,
+            })
         })?
         .with_swarm_config(|c| c.with_idle_connection_timeout(Duration::from_secs(60)))
         .build();
@@ -77,7 +82,7 @@ async fn main() -> Result<()> {
                 })) => {
                     let data = String::from_utf8_lossy(&message.data);
                     info!("Received Gossip from {peer_id}: {data}");
-                    
+
                     // V2.0 Persistence
                     if let Err(e) = db.save_message(&peer_id.to_string(), &message.topic.to_string(), &data) {
                         error!("Failed to save message to DB: {e}");
