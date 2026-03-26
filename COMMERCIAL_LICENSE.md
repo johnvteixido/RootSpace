@@ -1,27 +1,23 @@
-# RootSpace Commercial & Government License
+# RootSpace Commercial License Agreement
 
-## License Introduction
+RootSpace is developed under a **Dual License** model.
 
-RootSpace is primarily licensed under the **GNU Affero General Public License v3 (AGPL-3.0)**. This ensures that the decentralized core remains free and open-source.
+While the core functionality is openly available for non-commercial, academic, and open-source projects under the **GNU Affero General Public License v3.0 (AGPLv3)**, commercial enterprises and businesses wishing to monetize or embed RootSpace into proprietary (closed-source) software must acquire a **Commercial License**.
 
-## Commercial Licensing Option
+## When Do I Need a Commercial License?
 
-For government agencies, contractors, and enterprises that cannot comply with the copyleft requirements of the AGPL-3.0 (e.g., when embedding RootSpace in proprietary systems or closed-source products), we offer a **Commercial/Government Purpose License**.
+You are required to purchase a Commercial License if you intend to:
+1. **Derive Revenue:** Build a commercial product, SaaS offering, or managed service using the RootSpace networking or execution engine.
+2. **Close Source:** Distribute or deploy RootSpace within a proprietary application without releasing your source code to the public.
+3. **Remove Copyleft Obligations:** Bypass the AGPLv3 requirement that users interacting with your modified node over a network receive the source code.
 
-### Benefits of the Commercial License:
-- **Exemption from AGPLv3**: No requirement to share source code of your proprietary integration.
-- **Enterprise Support**: Direct access to core maintainers for security architecture and FedRAMP advisory.
-- **Warranty & Indemnification**: Standard commercial warranties and intellectual property indemnification.
-- **FIPS Compliance Support**: Assistance with configuring FIPS-validated cryptographic modules.
+## Commercial License Benefits
+* **Proprietary Exemption**: Use, modify, and distribute RootSpace within closed-source enterprise software.
+* **Warranties & Indemnification**: Legal protections unavailable under the open-source license.
+* **Priority Support**: Direct technical support, architectural reviews, and prioritized bug fixes directly from the core maintainers.
 
-## Contact Information
+## Purchasing a License
+To inquire about enterprise pricing, OEM distribution, or to purchase a Commercial License, please contact:
 
-To inquire about a commercial license or to discuss specific government procurement requirements (e.g., GSA Schedule, SEWP), please contact:
-
-**Sales & Licensing Team**
-Email: johnvteixido@gmail.com
-Website: [www.linkedin.com/in/johnvteixido](www.linkedin.com/in/johnvteixido)
-
----
-
-*Note: This document serves as a notice of licensing options and does not itself constitute a binding legal agreement. A separate signed contract is required for the Commercial/Government License.*
+**Email**: licensing@rootspace.io
+*(Update this email/contact link as the project matures)*
