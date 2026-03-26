@@ -97,4 +97,7 @@ RootSpace is designed for mission-critical deployments in highly regulated envir
 ---
 
 ## 🛡️ License
-AGPL-3.0 License. See the `LICENSE` file for more details.
+
+RootSpace is developed under a **Dual License** model:
+1. **Open Source**: The core is available under the strictly copyleft [**AGPL-3.0 License**](LICENSE) for non-commercial, academic, and open-source projects.
+2. **Commercial**: If you intend to use RootSpace in a closed-source or commercial environment, you must acquire a [**Commercial License**](COMMERCIAL_LICENSE.md).
