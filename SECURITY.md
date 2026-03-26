@@ -18,7 +18,7 @@ If you discover a vulnerability in the `rust-libp2p` networking layer, the `wasm
 
 Instead, practice responsible disclosure by emailing us directly:
 
-* **Email:** security@rootspace.io
+* **Email:** johnvteixido@gmail.com
 * **PGP Key ID:** *(To be published)*
 
 ### What to Include in Your Report
