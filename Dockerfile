@@ -1,5 +1,5 @@
 # Stage 1: Build Rust Backend
-FROM rust:1.85-bookworm AS rust-builder
+FROM rust:bookworm AS rust-builder
 RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
     protobuf-compiler \
