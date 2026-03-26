@@ -19,5 +19,4 @@ You are required to purchase a Commercial License if you intend to:
 ## Purchasing a License
 To inquire about enterprise pricing, OEM distribution, or to purchase a Commercial License, please contact:
 
-**Email**: licensing@rootspace.io
-*(Update this email/contact link as the project matures)*
+**Email**: johnvteixido@gmail.com
