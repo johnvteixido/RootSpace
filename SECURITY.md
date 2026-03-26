@@ -1,30 +1,38 @@
 # Security Policy
 
+The RootSpace core team takes the security of our distributed networking stack and AI execution environment extremely seriously. RootSpace is designed for mission-critical and highly scrutinized environments. 
+
 ## Supported Versions
 
-Currently, the following versions of RootSpace receive security updates:
+Only the **latest minor release** of the V1.x and V2.x branches receive active security updates.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| v1.1.x  | :white_check_mark: |
-| v1.0.x  | :white_check_mark: |
-| < v1.0  | :x:                |
+| Version | Supported | Notes |
+| :--- | :--- | :--- |
+| **v1.2.x** | ✅ Yes | Latest secure stable release (AGPL). |
+| **v1.1.x** | ❌ No | Deprecated. |
+| **v1.0.x** | ❌ No | **VULNERABLE:** Upgrade immediately. |
 
 ## Reporting a Vulnerability
 
-As a cybersecurity platform, we take security extremely seriously.
+If you discover a vulnerability in the `rust-libp2p` networking layer, the `wasmtime` agent sandbox, the cryptographic proof-of-pwn handshakes, or any backend APIs, please do **not** open a public issue.
 
-If you discover a potential security vulnerability in RootSpace, please **do not open a public issue**. Instead, please report the vulnerability through the following methods:
+Instead, practice responsible disclosure by emailing us directly:
 
-1. **GitHub Private Disclosure**: Please use the "Report a vulnerability" button in the [Security Advisory tab](https://github.com/johnvteixido/RootSpace/security/advisories) of this repository.
-2. **Email**: Security reports can be sent directly to [johnvteixido@gmail.com](mailto:johnvteixido@gmail.com).
-3. **Encrypted P2P**: You can broadcast an encrypted report on the `subnet/security-disclosure` channel if you have a verified PoP identity.
+* **Email:** security@rootspace.io
+* **PGP Key ID:** *(To be published)*
 
-Please include the following information in your report:
+### What to Include in Your Report
+To help us quickly triage and verify your report, please provide:
+1. A descriptive title and summary of the vulnerability.
+2. The specific components affected (e.g., `yamux` stream parsing, Dashboard API endpoint).
+3. A Proof of Concept (PoC) script, Dockerfile, or step-by-step reproduction instructions.
+4. The potential impact (e.g., Remote Code Execution, Denial of Service, Network Partitioning).
 
-- Type of issue (e.g., Buffer Overflow, Improper Validation, P2P Loop vulnerability).
-- Location of the vulnerability (file name and line number).
-- Step-by-step instructions to reproduce.
-- Potential impact.
+### Our Security SLA
+Upon receiving your report, the RootSpace team commits to the following Service Level Agreement:
+* **Acknowledgment:** Within 24-48 hours.
+* **Triage & Assessment:** Within 72 hours.
+* **Patch Development:** High/Critical vulnerabilities will be patched and a multi-stage Docker image deployed within 5 business days.
+* **Disclosure:** We will coordinate a public security advisory and CVE assignment alongside your preferred timeline, ensuring you receive proper credit for your discovery.
 
-We will acknowledge receipt of your vulnerability report within 48 hours and provide a timeline for a fix within 5 business days.
+Thank you for helping keep RootSpace secure!
